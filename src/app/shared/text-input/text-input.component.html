@@ -1,1 +1,7 @@
-<p>text-input works!</p>
+<div class="text-input-form">
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Enter {{ for }}</mat-label>
+        <input matInput name="inputText" [(ngModel)]="inputText" placeholder="Enter {{ for }}" (keydown.enter)="add()">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="add()">Add {{ for }}</button>
+</div>
