@@ -4,9 +4,11 @@ import { TextInputComponent } from './text-input/text-input.component';
 import { MaterialModule } from 'src/material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TitleCasePipe } from './pipes/title-case.pipe';
 
 const components = [
-  TextInputComponent
+  TextInputComponent, 
+  TitleCasePipe
 ];
 
 const modules = [

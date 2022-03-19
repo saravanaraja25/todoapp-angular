@@ -16,14 +16,19 @@
             padding: 10px 20px;
             min-width: 290px;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             .mat-card-content{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                margin-bottom: 0;
+                cursor: pointer;
                 p{
                     margin-bottom: 0;
                     font-weight: bold;
-                    cursor: pointer;
+                    span{
+                        font-weight: normal;
+
+                    }
                 }
             }
         }

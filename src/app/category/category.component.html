@@ -4,12 +4,13 @@
     </div>
     <div class="category-list">
         <mat-card class="category-item" *ngFor="let category of categories">
-            <mat-card-content>
-                <p [routerLink]="['/todos',category.id]">{{ category.name }}</p>
-                <button mat-icon-button color="warn" (click)="removeCategory(category)">
-                    <mat-icon>cancel</mat-icon>
-                </button>
-              </mat-card-content>
+            <mat-card-content [routerLink]="['/todos',category.id]">
+                <p>{{ category.name | titleCase }}</p>
+                <p>Created At: <span>{{ category.createdAt | date }}</span> </p>
+            </mat-card-content>
+            <button mat-icon-button color="warn" (click)="removeCategory(category)">
+                <mat-icon>cancel</mat-icon>
+            </button>
         </mat-card>
     </div>
 </div>
