@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TitleCasePipe } from './pipes/title-case.pipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const components = [
   TextInputComponent, 
@@ -15,7 +16,8 @@ const modules = [
   CommonModule,
   MaterialModule,
   FormsModule,
-  HttpClientModule
+  HttpClientModule,
+  DragDropModule
 ];
 
 @NgModule({

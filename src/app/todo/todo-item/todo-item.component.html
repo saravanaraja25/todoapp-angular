@@ -1,1 +1,10 @@
-<p>todo-item works!</p>
+<div [ngClass]="{'complete': todoItem.status=='Done', 'progress': todoItem.status=='Onprogress', 'todo': todoItem.status=='Todo'}" class="todo-item">
+    <span class="title">
+        {{todoItem.title }}
+        <br/>
+        Created At: {{todoItem.createdAt | date}}
+    </span>
+    <span mat-icon-button color="warn" (click)="removeTodo(todoItem)">
+        <mat-icon class="cancel-icon" color="warn" aria-hidden="false">cancel</mat-icon>
+    </span>
+</div>

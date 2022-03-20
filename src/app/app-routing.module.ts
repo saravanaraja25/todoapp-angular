@@ -11,12 +11,6 @@ const routes: Routes = [
   {
     path: 'todos',
     component: CategoryComponent,
-    // children: [
-    //   {
-    //     path: '',
-    //     loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule),
-    //   }
-    // ]
   },
   {
     path: 'todos/:id',
