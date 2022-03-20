@@ -36,11 +36,13 @@ export class TodosComponent implements OnInit {
   }
 
   addTodo(todo: string) {
-    this.todoService.addTodo({
-      title: todo,
-      status: TodoStatus.Todo,
-      createdAt: new Date()
-    }, this.category);
+    if(todo) {
+      this.todoService.addTodo({
+        title: todo,
+        status: TodoStatus.Todo,
+        createdAt: new Date()
+      }, this.category);
+    }
   }
 
   removeTodo(todo: Todo) {

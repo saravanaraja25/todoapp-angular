@@ -8,7 +8,7 @@
                 <div class="drag-drop-container-header">
                     <h3>Todo</h3>
                 </div>
-                <div class="drag-drop-container-body" id="cdk-drop-list-0" cdkDropList [cdkDropListData]="todos" (cdkDropListDropped)="drop($event)">
+                <div class="drag-drop-container-body" id="cdk-drop-list-0" cdkDropList cdkDropListSortingDisabled [cdkDropListData]="todos" (cdkDropListDropped)="drop($event)">
                     <div class="drag-drop-item" *ngFor="let todoItem of todos" cdkDrag>
                         <app-todo-item class="todo-items" [todoItem]="todoItem" (removeTodoItem)="removeTodo($event)"></app-todo-item>
                     </div>
@@ -18,7 +18,7 @@
                 <div class="drag-drop-container-header">
                     <h3>On Progress</h3>
                 </div>
-                <div class="drag-drop-container-body" id="cdk-drop-list-1" cdkDropList [cdkDropListData]="todosOnProgress" (cdkDropListDropped)="drop($event)">
+                <div class="drag-drop-container-body" id="cdk-drop-list-1" cdkDropList cdkDropListSortingDisabled [cdkDropListData]="todosOnProgress" (cdkDropListDropped)="drop($event)">
                     <div class="drag-drop-item" *ngFor="let todoItem of todosOnProgress" cdkDrag>
                         <app-todo-item class="todo-items" [todoItem]="todoItem" (removeTodoItem)="removeTodo($event)"></app-todo-item>
                     </div>
@@ -28,7 +28,7 @@
                 <div class="drag-drop-container-header">
                     <h3>Done</h3>
                 </div>
-                <div class="drag-drop-container-body" id="cdk-drop-list-2" cdkDropList [cdkDropListData]="todosDone" (cdkDropListDropped)="drop($event)">
+                <div class="drag-drop-container-body" id="cdk-drop-list-2" cdkDropList cdkDropListSortingDisabled [cdkDropListData]="todosDone" (cdkDropListDropped)="drop($event)">
                     <div class="drag-drop-item" *ngFor="let todoItem of todosDone" cdkDrag>
                         <app-todo-item class="todo-items" [todoItem]="todoItem" (removeTodoItem)="removeTodo($event)"></app-todo-item>
                     </div>
