@@ -5,13 +5,10 @@
   cursor: pointer;
 }
 .git-btn{
-  .mat-button-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img{
-      width: 20px;
-      height: 20px;
-    }
+  img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -2px;
   }
 }
