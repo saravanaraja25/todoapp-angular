@@ -1,6 +1,6 @@
 <div [ngClass]="{'complete': todoItem.status=='Done', 'progress': todoItem.status=='Onprogress', 'todo': todoItem.status=='Todo'}" class="todo-item">
     <span class="title">
-        {{todoItem.title }}
+        {{todoItem.title | titleCase }}
         <br/>
         Created At: {{todoItem.createdAt | date}}
     </span>
