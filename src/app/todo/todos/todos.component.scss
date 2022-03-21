@@ -1,9 +1,14 @@
 .todos {
   .text-input {
     margin-top: 20px;
+    padding: 0 10%;
     display: flex;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-between;
+    // width: 100%;
+    align-items: center;
+    p{
+      font-size: 18px;
+    }
   }
   .container {
     display: flex;

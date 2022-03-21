@@ -1,6 +1,10 @@
 <div class="todos">
     <div class="text-input">
         <app-text-input [for]="'todo'" (addEvent)="addTodo($event)"></app-text-input>
+        <div class="category-name">
+            <p>Category Name: <span>{{categoryName}}</span></p>
+            
+        </div>
     </div>
     <div class="todo-drag-drop">
         <div class="container" cdkDropListGroup>

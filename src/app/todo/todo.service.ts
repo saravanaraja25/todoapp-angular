@@ -11,25 +11,37 @@ export class TodoService {
 
   private apiUrl: string = environment.apiUrl+'categories/';
 
+  todosAll: Todo[] = [];
+
+  category: string = '';
+
   todos: Todo[] = [];
 
   private subjectSource = new Subject<Todo[]>();
 
+  private subjectSrc = new Subject<string>();
+
   subjectMessage = this.subjectSource.asObservable();
+
+  msg = this.subjectSrc.asObservable();
 
   constructor(private http: HttpClient) { }
 
   getTodos(categoryId: string) {
     this.todos = [];
-    this.http.get<Todo[]>(this.apiUrl+ categoryId + '/todos.json').subscribe(
-      (todos) => {
-        if(todos) {
-          Object.entries(todos).forEach(([key, todo]) => {
+    this.category = '';
+    this.http.get(this.apiUrl+ categoryId + '.json').subscribe(
+      (data: any) => {
+        this.category = data.name;
+        this.todosAll= data.todos;
+        if(this.todosAll) {
+          Object.entries(this.todosAll).forEach(([key, todo]) => {
             todo.id = key;
             this.todos.push(todo);
           });
         }
         this.subjectSource.next(this.todos);
+        this.subjectSrc.next(this.category);
       }
     );
   }

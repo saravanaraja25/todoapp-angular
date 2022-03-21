@@ -14,7 +14,11 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   category: any;
 
-  sub: Subscription = new Subscription;
+  categoryName: string= '';
+
+  subTodos: Subscription = new Subscription;
+
+  subCategory: Subscription = new Subscription;
 
   todos: Todo[] = [];
 
@@ -26,13 +30,19 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.category = this.route.snapshot.paramMap.get('id');
-    this.sub = this.todoService.subjectMessage.subscribe(
+    this.subTodos = this.todoService.subjectMessage.subscribe(
       (todos: Todo[]) => {
+        console.log(todos);
         if(todos) {
           this.todos = todos.filter(t => t.status === TodoStatus.Todo);
           this.todosOnProgress = todos.filter(t => t.status === TodoStatus.Onprogress);
           this.todosDone = todos.filter(t => t.status === TodoStatus.Done);
         }
+      }
+    );
+    this.subCategory = this.todoService.msg.subscribe(
+      (categoryName: string) => {
+        this.categoryName = categoryName;
       }
     );
     this.todoService.getTodos(this.category);
@@ -76,7 +86,8 @@ export class TodosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.subTodos.unsubscribe();
+    this.subCategory.unsubscribe();
   }
 
 }
