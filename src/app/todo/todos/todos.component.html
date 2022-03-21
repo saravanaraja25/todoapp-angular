@@ -1,4 +1,4 @@
-<div class="todos">
+<div class="todos" *ngIf="categoryName">
     <div class="text-input">
         <app-text-input [for]="'todo'" (addEvent)="addTodo($event)"></app-text-input>
         <div class="category-name">
@@ -40,4 +40,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="category-not-found">
+    <p>Category Not Found</p>
+    <a [routerLink]="'/'">Go to Home</a>
 </div>
