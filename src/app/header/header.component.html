@@ -1,8 +1,21 @@
 <mat-toolbar color="primary">
     <span class="logo" mat-flat-button color="primary" [routerLink]="'/'">Todo List</span>
     <span class="spacer"></span>
+    <button *ngIf="authService.currentUser | async as user; else loginButton" mat-button (click)="logout()">
+        Log Out
+    </button>
+
+    <ng-template #loginButton>
+        <button mat-button [routerLink]="'/user/login'">
+            Login
+        </button>
+        <button mat-button [routerLink]="'/user/register'">
+            Register
+        </button>
+    </ng-template>
     <a target="_blank" href="https://github.com/saravanaraja25/todoapp-angular" class="git-btn" mat-button>
         <img src="https://material.angular.io/assets/img/homepage/github-circle-white-transparent.svg" alt="">
         Github
     </a>
+    
 </mat-toolbar>

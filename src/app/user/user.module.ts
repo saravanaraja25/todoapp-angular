@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     CommonModule,
     UserRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HotToastModule.forRoot()
   ]
 })
 export class UserModule { }

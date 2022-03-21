@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { CategoryComponent } from './category/category.component';
 import { SharedModule } from './shared/shared.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    HotToastModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
