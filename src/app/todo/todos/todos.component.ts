@@ -1,6 +1,7 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Todo, TodoStatus } from '../Todo.model';
 import { TodoService } from '../todo.service';
 
@@ -9,9 +10,11 @@ import { TodoService } from '../todo.service';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
 
   category: any;
+
+  sub: Subscription = new Subscription;
 
   todos: Todo[] = [];
 
@@ -23,7 +26,7 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.category = this.route.snapshot.paramMap.get('id');
-    this.todoService.subjectMessage.subscribe(
+    this.sub = this.todoService.subjectMessage.subscribe(
       (todos: Todo[]) => {
         if(todos) {
           this.todos = todos.filter(t => t.status === TodoStatus.Todo);
@@ -70,6 +73,10 @@ export class TodosComponent implements OnInit {
         this.todoService.updateTodo(this.todosDone[event.currentIndex], this.category);
       }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }
